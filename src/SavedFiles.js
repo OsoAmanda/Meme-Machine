@@ -2,6 +2,8 @@ import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHome } from '@fortawesome/free-solid-svg-icons'
+
 
 function SavedFiles(props) {
     let [savedImages, setSavedImages] = useState([])
@@ -40,7 +42,7 @@ function SavedFiles(props) {
     return (
         <div className='savedParent'>
         <Link to='/'>
-            <button><FontAwesomeIcon icon={["far", "home"]} /></button>
+            <button style={{width:'100px'}}><FontAwesomeIcon icon={faHome} /></button>
             </Link>
             <ShowSaved />
         </div>
