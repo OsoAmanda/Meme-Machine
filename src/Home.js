@@ -38,8 +38,19 @@ function Home(props) {
   //   }
   //}
     async function saveMeme() {
-    console.log(allMemes, allText)
-    let res = await axios.post('https://ironrest.herokuapp.com/MemeMachine',{quote:allText.quote, meme:allMemes})
+    // console.log(allMemes, allText);
+    let newMeme = {'_id':Math.round((Math.random()*100000000000000000)+100000000000000000),'quote':allText.quote,'meme':allMemes};
+    let storage = window.localStorage.getItem('memes');
+    if (storage == undefined || storage == ''){
+      window.localStorage.setItem('memes',JSON.stringify([newMeme]));
+    } else {
+      let tmp = JSON.parse(storage);
+      tmp.push(newMeme);
+      window.localStorage.setItem('memes',JSON.stringify(tmp));
+    }
+
+    // let res = await axios.post('https://ironrest.herokuapp.com/MemeMachine',{quote:allText.quote, meme:allMemes})
+
   }
 
   return (

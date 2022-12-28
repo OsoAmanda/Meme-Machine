@@ -6,16 +6,24 @@ function SavedFiles(props) {
     let [savedImages, setSavedImages] = useState([])
 
     useEffect (function() {
-        async function fetchData() {
-        let res = await axios.get(`https://ironrest.herokuapp.com/MemeMachine`);
-        console.log(res)
+        // async function fetchData() {
+        function fetchData() {
+        // let res = await axios.get(`https://ironrest.herokuapp.com/MemeMachine`);
+        // console.log(res)
         
-        setSavedImages(res.data)
+        // setSavedImages(res.data)
+        let res = JSON.parse(window.localStorage.getItem('memes'));
+        console.log('RES');
+        console.log(res);
+        setSavedImages(res)
         }
         fetchData();
     },[]) 
     const ShowSaved = () =>{
         console.log(savedImages)
+        if (savedImages == undefined || savedImages.count == 0){
+            return <div><p>No Saved Images</p></div>;
+        }
         return savedImages.map(eachImage => {
             return <div className='savedItems' id={eachImage._id}><img src={eachImage.meme}/><p>{eachImage.quote}</p></div>
         })
