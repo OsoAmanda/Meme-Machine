@@ -5,6 +5,8 @@ import './App.css';
 import ApiCall from './ApiCall';
 import ReturnText from './ReturnText';
 import SavedFiles from './SavedFiles';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFolder } from '@fortawesome/free-solid-svg-icons'
 import { render } from '@testing-library/react';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
@@ -78,7 +80,9 @@ function Home(props) {
     </div>
     <div className="Saved">
     <Link to="/saved">
-      <button>🗀</button>
+    <button><FontAwesomeIcon icon={faFolder} /></button>
+
+      {/* <button><FontAwesomeIcon icon="folder" /></button> */}
       </Link> 
     </div>
     </div>
